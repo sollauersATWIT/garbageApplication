@@ -26,10 +26,10 @@ import javafx.util.Duration;
 public class garbageApplication extends Application implements Initializable{
 	
 	@FXML
-	Button trashButton;
+	Button trashBTN;
 	
 	@FXML
-	Button recycleButton;
+	Button recycleBTN;
 	
 	@FXML
 	Button lookupButton;
@@ -41,7 +41,7 @@ public class garbageApplication extends Application implements Initializable{
 	TextArea textArea;
 	
 	@FXML
-	Pane mainPane;
+	TextField points; 
 	
 	WordInformation wi = new WordInformation();
 	
@@ -53,31 +53,49 @@ public class garbageApplication extends Application implements Initializable{
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
+	
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 			lookupButton.setOnAction(new EventHandler<ActionEvent>(){
 			@Override
 			public void handle (ActionEvent event) {
-				textArea.setText("STATIC TEXT");
-			}
-		});
+					textArea.setText(wi.lookupMethod());				
+				}
+			});
+			
 			restartButton.setOnAction(new EventHandler<ActionEvent>(){
 				@Override
 				public void handle (ActionEvent event) {
-					textArea.setText("");
+					textArea.setText("");	
+					points.setText("");
+					//fix up method 
+					
+					wi.restartMethod();
 				}
 			});
-	 
-	}
-	 public void handlelookupButtonPress() {
-		    //what happens when lookup button is clicked
 			
-	    }
-	public static void main(String[] args) {
-		launch(args);
+			recycleBTN.setOnAction(new EventHandler<ActionEvent>(){
+				@Override
+				public void handle (ActionEvent event) {
+					points.setText(wi.recycleMethod());
+					textArea.setText(wi.lookupMethod());											
+				}
+			});
 
+			trashBTN.setOnAction(new EventHandler<ActionEvent>(){
+				@Override
+				public void handle (ActionEvent event) {
+					points.setText(wi.trashMethod());
+					textArea.setText(wi.lookupMethod());						
+				}
+			});	 
 	}
+		
+		public static void main(String[] args) {
+			launch(args);	
+		}
 
 
 }
