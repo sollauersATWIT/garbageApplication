@@ -69,9 +69,7 @@ public class garbageApplication extends Application implements Initializable{
 				@Override
 				public void handle (ActionEvent event) {
 					textArea.setText("");	
-					points.setText("");
-					//fix up method 
-					
+					points.setText("");					
 					wi.restartMethod();
 				}
 			});
@@ -91,7 +89,7 @@ public class garbageApplication extends Application implements Initializable{
 					textArea.setText(wi.lookupMethod());						
 				}
 			});	 
-	}
+	} 
 		
 		public static void main(String[] args) {
 			launch(args);	

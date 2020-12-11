@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
-public class WordInformation {
+public class WordInformation{
 		@FXML
 	    private TextField points;
 
@@ -47,29 +47,17 @@ public class WordInformation {
 		  itemList.add("Empty soup can");//11
 		  itemList.add("Game over! Thanks for playing!");//12
 		 		
-		
-		
 		return itemList;
 	}
 		
-		  //button click can return a value 1 or 0
-		
-		//if click == value of answer at index of the item on itemList, +1 point	
 
-		//then when either recyleBTN or trashBTN is clicked.. compare index and add or subtract point
-		
-		
-		  //button click - loop add to i each click
-		 // i++;
-		
-	
 	//this method returns an element from the itemList
 	public String lookupMethod(){
 		
 		 ArrayList<String> s = wordSearch();
 		 
 		 //increases i when button is clicked
-		 //then sets s to that element at that index of itemList
+		 //then sets nextListItem to the element at that index of itemList
 		 
 		 i++;		 
 		 String nextListItem = s.get(i);	
@@ -78,21 +66,18 @@ public class WordInformation {
 		
 	}
 	
-	//this method adds or subtracts a point when the recycleBTN is clicked
-	
+	//this method adds or subtracts a point when the recycleBTN is clicked	
 	public String recycleMethod(){
-		
+		//checks to see if the user has won
+		//if so, displays a message
+		//if not continues adding/subtracting points from score
 		if (numPoints >= 9) {
 			return numPoints + " points. YOU WIN!";
 			}
 		else if (i == 11 && numPoints < 9) {
 			return numPoints + " points. Game over. You lose";
 		}
-		
-			if(i == 0) {
-				return "Click 'Get Item' first!";			
-			}
-			
+	
 			//index of all elements that should be recycled
 			if(i == 1 || i == 4 || i == 5 || i == 7  || i == 10 || i == 11) {	
 				
@@ -100,7 +85,7 @@ public class WordInformation {
 				return "+1     Total Points: " + numPoints;
 				
 			}
-			
+			//index of all items that should be thrown away
 			else if (i == 2 || i == 3 || i == 6 || i == 8 || i == 9){			
 				numPoints --;
 				return "-1     Total Points: " + numPoints;
@@ -119,13 +104,10 @@ public class WordInformation {
 			return numPoints + " points. Game over. You lose";
 		}
 		
-			if(i == 0) {				
-				return "Click 'Get Item' first!";					
-			}
 			//index of all elements that should be thrown away	
 			if(i == 2 || i == 3 || i == 6 || i == 8 | i == 9) {	
 				
-				numPoints ++;		
+				numPoints ++;	
 				return "+1     Total Points: " + numPoints;
 				
 			}
@@ -140,6 +122,7 @@ public class WordInformation {
 		
 	}
 	
+	//this method starts the game over
 	public void restartMethod() {
 		i = 0;
 		numPoints = 0;
@@ -147,27 +130,3 @@ public class WordInformation {
 	}
 	  
 }
-
-
-///QUESTIONS:
-
-//fix restart
-
-/* //may or may not use
-//1 means recycle
-//0 means trash
-ArrayList<Integer> answer = new ArrayList<Integer>();
-answer.add(0);//corresponds to blank arrayList item
-answer.add(1);
-answer.add(0);
-answer.add(0);
-answer.add(1);
-answer.add(1);
-answer.add(0);
-answer.add(1);
-answer.add(0);
-answer.add(1);
-answer.add(0);
-
-
-*/
